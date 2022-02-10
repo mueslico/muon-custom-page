@@ -2,8 +2,9 @@
 <html lang="ko">
 <head>
     <meta charset="utf-8"/>
+    <link rel="icon" href="/favicon.ico"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="description" content="오류가 발생했습니다."/>
+    <meta name="description" content="서브컬쳐 음원 스트리밍 서비스 MuOn"/>
     <link href="https://rawcdn.githack.com/DevMoeWork/assets/d475c5937b041c5f3880c023567d71b3076065a6/muon/404.css" rel="stylesheet">
     <title>오류가 발생했습니다.</title>
     <style>
@@ -29,5 +30,24 @@
         </div>
     </div>
 </div>
+<script>
+    //
+    if(document.querySelector('h1').textContent=='Access denied'){
+        document.querySelector('h1').textContent = '접근이 차단되었습니다.';
+    }
+    if(document.querySelector('h1 + p').textContent=='This website is using a security service to protect itself from online attacks.'){
+        document.querySelector('h1 + p').textContent = '이 사이트에서 고객님께서는 온라인 보안 문제나 국가제한 등의 사유로 차단되었습니다. MuOn 서비스는 서비스 국가에서만 사용이 가능합니다.';
+    }
+    var li = document.querySelectorAll('.cferror_details > li');
+    for(i=0; i<li.length; i++){
+        var current = li[i];
+        current.textContent = current.textContent.replace('Ray ID:', '참조 아이디:');
+        current.textContent = current.textContent.replace('Timestamp:', '발생 시각:');
+        current.textContent = current.textContent.replace('Your IP address:', '아이피 주소:');
+        current.textContent = current.textContent.replace('Requested URL:', '주소:');
+        current.textContent = current.textContent.replace('Error reference number:', '참조번호:');
+        current.textContent = current.textContent.replace('Server ID:', '서버 아이디:');
+    }
+</script>
 </body>
 </html>
