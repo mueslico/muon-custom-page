@@ -3,110 +3,12 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,minimum-scale=0,maximum-scale=10,user-scalable=no">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="format-detection" content="telephone=no">
     <title>죄송합니다. 해당 국가에서는 서비스를 이용할 수 없습니다.</title>
-
-    <style>
-        @import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR");
-
-        * {
-            position: relative;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Noto Sans KR", sans-serif;
-        }
-
-        .message {
-            text-align: center;
-        }
-
-        body {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(to bottom right, #EEE, #AAA);
-        }
-
-        h1 {
-            margin: 40px 0 20px;
-        }
-
-        .lock {
-            border-radius: 5px;
-            width: 55px;
-            height: 45px;
-            background-color: #333;
-            animation: dip 1s;
-            animation-delay: 1.5s;
-        }
-
-        .lock::before,
-        .lock::after {
-            content: "";
-            position: absolute;
-            border-left: 5px solid #333;
-            height: 20px;
-            width: 15px;
-            left: calc(50% - 12.5px);
-        }
-
-        .lock::before {
-            top: -30px;
-            border: 5px solid #333;
-            border-bottom-color: transparent;
-            border-radius: 15px 15px 0 0;
-            height: 30px;
-            animation: lock 2s, spin 2s;
-        }
-
-        .lock::after {
-            top: -10px;
-            border-right: 5px solid transparent;
-            animation: spin 2s;
-        }
-
-        @keyframes lock {
-            0% {
-                top: -45px;
-            }
-
-            65% {
-                top: -45px;
-            }
-
-            100% {
-                top: -30px;
-            }
-        }
-
-        @keyframes spin {
-            0% {
-                transform: scaleX(-1);
-                left: calc(50% - 30px);
-            }
-
-            65% {
-                transform: scaleX(1);
-                left: calc(50% - 12.5px);
-            }
-        }
-
-        @keyframes dip {
-            0% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(10px);
-            }
-
-            100% {
-                transform: translateY(0px);
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="./barrier.css">
 </head>
 
 <body>
@@ -114,10 +16,25 @@
     <div class="message">
         <h1>서비스를 이용할 수 없습니다.</h1>
         <p>
-            저작권법에 따라 MuOn 서비스는 한국에서만 이용하실 수 있습니다.<br>
-            오류라고 생각되는 경우, 아래 이메일로 문의주시기 바랍니다.
+            저작권법에 따라 MuOn 서비스는 서비스지역에서만 이용하실 수 있습니다.<br>
+            오류라고 생각되는 경우, <a href="javascript:showMyContacts();">[여기를 눌러서]</a> 연락주시기 바랍니다.
+            <br>
+            <b>이메일 : abuse@moe.work</b>
+        </p>
+        <p>
+            <br>
+            참조 아이디 : ::RAY_ID::<br>
+            접속 국가명 : ::GEO::<br>
+            IP Address : ::CLIENT_IP::
         </p>
     </div>
+
+    <script>
+        function showMyContacts() {
+            alert(
+                '[주식회사 뮤즐리 연락처]\n전화번호 : 070-4255-1911\n이메일 : abuse (골뱅이) moe (점) work\n\n문의하실 때에는 아래의 참조 아이디를 불러주시기 바랍니다.');
+        }
+    </script>
 </body>
 
 </html>
