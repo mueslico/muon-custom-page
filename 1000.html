@@ -34,13 +34,26 @@
     //
     if(document.querySelector('h1').textContent=='Access denied'){
         document.querySelector('h1').textContent = '접근이 차단되었습니다.';
+        if(document.querySelector('h1 + p').textContent=='This website is using a security service to protect itself from online attacks.'){
+            document.querySelector('h1 + p').textContent = '이 사이트에서 고객님께서는 온라인 보안 문제나 국가제한 등의 사유로 차단되었습니다.';
+        }
     }
-    if(document.querySelector('h1 + p').textContent=='This website is using a security service to protect itself from online attacks.'){
-        document.querySelector('h1 + p').textContent = '이 사이트에서 고객님께서는 온라인 보안 문제나 국가제한 등의 사유로 차단되었습니다. MuOn 서비스는 서비스 국가에서만 사용이 가능합니다.';
+    if(document.querySelector('h1').textContent=='DNS resolution error'){
+        document.querySelector('h1').textContent = 'DNS 확인 오류';
+        // network. Cloudflare is currently unable to resolve your requested domain
+        if(/network. Cloudflare is currently unable to resolve your requested domain/.test(document.querySelector('h1 + p').textContent)){
+            document.querySelector('h1 + p').textContent = '현재 기술적인 문제로 인해서 DNS 확인에 실패했습니다. 대표적인 문제는 두가지가 있습니다.';
+        }
     }
-    var li = document.querySelectorAll('.cferror_details > li');
+    var li = document.querySelectorAll('li');
     for(i=0; i<li.length; i++){
         var current = li[i];
+        if(/Most likely:/.test(current.textContent)){
+            current.innerHTML = "<strong>가장 빈번한 사유:</strong> DNS가 글로벌 네트워크에 배포중이나, 아직 전세계에 배포되지 않음.";
+        }
+        if(/Less likely:/.test(current.textContent)){
+            current.innerHTML = "<strong>그 외에:</strong> MuOn 내부 서버의 오류이거나 파트너사의 DNS 관련 오류";
+        }
         current.textContent = current.textContent.replace('Ray ID:', '참조 아이디:');
         current.textContent = current.textContent.replace('Timestamp:', '발생 시각:');
         current.textContent = current.textContent.replace('Your IP address:', '아이피 주소:');
